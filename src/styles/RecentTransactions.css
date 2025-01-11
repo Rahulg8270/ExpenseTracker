@@ -1,0 +1,94 @@
+.transaction-component{
+    width: 55%;
+    height: 50vh;
+}
+.transaction-container{
+    height: 100%;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding: 0.5rem 3rem;
+    /* height: 45vh; */
+    border-radius: 25px;
+}
+
+.transaction-container h2{
+    font-size: 30px;
+}
+
+
+.transactions{
+    display: flex;
+    justify-content: space-between;
+    /* align-items: center; */
+    border-bottom: 1px solid black;
+    padding-bottom: 0.8em;
+}
+.transactions h3{
+    align-content: center;
+    margin: 0 auto;
+}
+
+.left-part{
+   display: flex;
+   align-items: start;
+   gap: 1em;
+}
+.right-part{
+    display: flex;
+    gap: 1em;
+    align-items: center;
+}
+.right-part button{
+    padding: 10px;
+    border-radius: 30%;
+    border: none;
+    font-size: 20px;
+    font-weight: 400;
+    color: #fff;
+    cursor: pointer;
+}
+.right-part #edit{
+    background-color: #F4BB4A;
+}
+.right-part #delete{
+    background-color: #FF3E3E;
+}
+
+.transaction-component h2 {
+    font-family: "Ubuntu", serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: #fff;
+    margin: 0.4em 0;
+  }
+  .transactions #category{
+    background-color: #dcdcdc;
+    padding: 8px 10px;
+    border-radius: 50%;
+    font-size: 25px;
+    margin-bottom: 0.2em;
+    text-align: center;
+    font-weight: 400;
+  }
+  .transactions #title{
+    font-size: 18px;
+    font-weight: 400;
+    font-family: 'Open Sans', serif;
+    line-height: 21.2px;
+    text-transform: capitalize;
+  }
+  .transactions #date{
+    font-size: 14px;
+    color: #9b9b9b;
+    font-weight: 400;
+    font-family: 'Open Sans', serif;
+    line-height: 21.2px;
+    text-transform: capitalize;
+  }
+  .transactions #price{
+    color: #c48e23;
+    font-weight: 700;
+    font-size: 18px;
+  }
