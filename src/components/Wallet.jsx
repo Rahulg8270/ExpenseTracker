@@ -2,13 +2,13 @@ import { MyContext } from "../context/MyContext";
 import Modal from "react-modal";
 import { useSnackbar } from "notistack";
 import React, { useContext, useEffect, useState } from "react";
-// import '../../src/App.css'
 import "../styles/Wallet.css";
 
 const Wallet = () => {
   const { walletBalance, setWalletBalance, customStyles } =
     useContext(MyContext);
   const [balanceIncrease, setBalanceIncrease] = useState(0);
+  // can be reused store it in context.jsx
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const { enqueueSnackbar } = useSnackbar();
@@ -52,6 +52,7 @@ const Wallet = () => {
       <button className="adding-balance" onClick={() => setIsModalOpen(true)}>
         Add Income
       </button>
+      {/* make a separate component and import it to improve readability*/}
       <Modal
         isOpen={isModalOpen}
         onRequestClose={() => setIsModalOpen(false)}

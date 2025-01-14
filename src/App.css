@@ -126,6 +126,7 @@
 
 
 
+
 /* Modal styling */
 
 .input-balance {
@@ -252,5 +253,54 @@ input[type="number"] {
   }
   .bar-component {
     width: 100%;
+  }
+}
+
+/* 390px width and below*/
+@media screen and (max-width:390px){
+  .pagination{
+    margin-top: 0.7rem;
+  }
+  .expense-container h1{
+    text-align: center;
+  }
+  .top-container {
+    flex-direction: column;
+    /* background-color: palegoldenrod; */
+    justify-content: space-evenly;
+    padding: 2.5em 0;
+  }
+  .wallet-container {
+    width: 90%;
+  }
+  .expense-component {
+    width: 90%;
+  }
+
+  /* make the bottom half responsive */
+  .bottom-container {
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 5em;
+    /* margin-bottom: ; */
+  }
+  .transaction-component {
+    width: 100%;
+    margin-bottom: 25%;
+  }
+  .transaction-component h2{
+    text-align: center;
+  }
+  .bar-component {
+    width: 100%;
+  }
+  .bar-component h2{
+    text-align: center;
+  }
+}
+
+@media screen and (max-width:375px){
+  .transaction-component {
+    margin-bottom: 65%;
   }
 }

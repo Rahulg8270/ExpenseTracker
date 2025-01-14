@@ -1,4 +1,30 @@
 .piechart-container {
-    max-width: 100%;
-    padding: 10px;
+  /* max-width: 100%; */
+  /* padding: 10px; */
+  /* text-align: center; */
+}
+
+.legend-container {
+  display: flex;
+  align-items: center;
+  margin: 0 10px;
+  justify-content: center;
+}
+.legend-tag {
+    display: flex;
+    align-items: center;
+    margin: 0 10px;
+  }
+
+@media screen and (max-width: 430px) {
+  
+  .legend-container {
+    flex-direction: column;
+    align-items: start;
+    gap: 1rem;
+    padding-left: 20%;
+    /* background-color: red; */
+    width: 100%;
+    /* transform: translate(50%); */
+  }
 }

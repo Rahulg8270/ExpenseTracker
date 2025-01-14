@@ -79,8 +79,6 @@ const Context = ({ children }) => {
   
   const handleExpenseSubmit = (e) => {
     e.preventDefault()
-    // console.log(currentEditIndex)
-    // console.log(title,category,date,price)
     setlistOfExpenses(() => {
       const updatedExpenseList = listOfExpenses.map((item,index) => {
         if(currentEditIndex === index){
@@ -124,11 +122,6 @@ const Context = ({ children }) => {
     customStyles
   };
 
-  
-
-  // useEffect(()=>{
-  //   setWalletBalance(prevBalance => prevBalance)
-  // },[])
 
   return (
     <MyContext.Provider

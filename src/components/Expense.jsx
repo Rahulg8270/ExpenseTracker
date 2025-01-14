@@ -105,6 +105,7 @@ const Expense = () => {
         Add Expenses
       </button>
 
+      {/* make a separate component and import it to improve readability and reuse when clicking on the edit button*/}
       <Modal isOpen={isModalOpen} onRequestClose={() => setIsModalOpen(false)} style={customStyles}>
         <h1>Add Expenses</h1>
         <form onSubmit={(e) => handleSubmit(e)} className="input-expenses">

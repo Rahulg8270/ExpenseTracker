@@ -65,7 +65,7 @@ const PieCharts = () => {
     .filter((entry) => entry.value > 0); // Exclude categories with 0 value from the pie chart
 
   return (
-    <div className="piechart-container" style={{ textAlign: "center" }}>
+    <div className="piechart-container">
       <PieChart width={chartDimensions.width} height={chartDimensions.height}>
         <Pie
           data={data}
@@ -85,16 +85,12 @@ const PieCharts = () => {
       </PieChart>
 
       <div
-        style={{ display: "flex", justifyContent: "center", marginTop: "20px" }}
+        className="legend-container"
       >
         {categories.map((category, index) => (
           <div
             key={`legend-${index}`}
-            style={{
-              display: "flex",
-              alignItems: "center",
-              margin: "0 10px",
-            }}
+            className="legend-tag"
           >
             <div
               style={{

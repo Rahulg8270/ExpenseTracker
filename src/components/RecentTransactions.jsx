@@ -3,7 +3,7 @@ import { useState } from "react";
 import { MyContext } from "../context/MyContext";
 import Modal from "react-modal";
 // import "../../src/App.css";
-import '../styles/RecentTransactions.css'
+import "../styles/RecentTransactions.css";
 import Pagination from "./Pagination";
 import { TiDeleteOutline } from "react-icons/ti";
 import { CiEdit } from "react-icons/ci";
@@ -17,12 +17,9 @@ const RecentTransactions = () => {
   const [currentPage, setPageChange] = useState(1);
   const itemsPerPage = 3;
 
-
   const {
     listOfExpenses,
-    // setlistOfExpenses,
     handleDeletingExpense,
-    // currentEditIndex,
     setCurrentEditIndex,
     title,
     setTitle,
@@ -33,7 +30,7 @@ const RecentTransactions = () => {
     date,
     setDate,
     handleExpenseSubmit,
-    customStyles
+    customStyles,
   } = useContext(MyContext);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -71,10 +68,10 @@ const RecentTransactions = () => {
     setIsModalOpen(false);
   };
 
-  function getMonthName(month){
+  function getMonthName(month) {
     const d = new Date();
-    d.setMonth(month-1);
-    const monthName = d.toLocaleString("default", {month: "long"});
+    d.setMonth(month - 1);
+    const monthName = d.toLocaleString("default", { month: "long" });
     return monthName;
   }
 
@@ -97,25 +94,33 @@ const RecentTransactions = () => {
                   </div>
                   <div>
                     <p id="title">{item.title}</p>
-                    <p id="date">{`${getMonthName(item.date.slice(5,7))} ${(item.date.slice(8,10))}, ${(item.date.slice(0,4))}`}</p>
+                    <p id="date">{`${getMonthName(
+                      item.date.slice(5, 7)
+                    )} ${item.date.slice(8, 10)}, ${item.date.slice(0, 4)}`}</p>
                   </div>
                 </div>
 
                 <div className="right-part">
-                  <p id="price">₹{item.price}</p>
-                  <button id="delete" onClick={() => handleDeletingExpense(index)}>
-                    <TiDeleteOutline />
-                  </button>
-                  {/* focus here */}
-                  <button
-                    id="edit"
-                    onClick={() => {
-                      setCurrentEditIndex(index);
-                      handleInputModal(index);
-                    }}
-                  >
-                    <CiEdit />
-                  </button>
+                  <div className="first-part">
+                    <p id="price">₹{item.price}</p>
+                  </div>
+                  <div className="second-part">
+                    <button
+                      id="delete"
+                      onClick={() => handleDeletingExpense(index)}
+                    >
+                      <TiDeleteOutline />
+                    </button>
+                    <button
+                      id="edit"
+                      onClick={() => {
+                        setCurrentEditIndex(index);
+                        handleInputModal(index);
+                      }}
+                    >
+                      <CiEdit />
+                    </button>
+                  </div>
                 </div>
               </div>
             );
@@ -128,44 +133,51 @@ const RecentTransactions = () => {
           onPageChange={handlePageChange}
         />
 
-        {/* focus here */}
+        {/* make a separate component and import it to improve readability and reuse when clicking on the edit button*/}
         <Modal
           isOpen={isModalOpen}
           onRequestClose={() => setIsModalOpen(false)}
           style={customStyles}
         >
           <h1>Add Expenses</h1>
-          <form onSubmit={(e) => handleExpenseSubmit(e)} className="input-expenses">
+          <form
+            onSubmit={(e) => handleExpenseSubmit(e)}
+            className="input-expenses"
+          >
             <input
               type="text"
               placeholder="title"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
-              // required
             />
             <input
               type="number"
               placeholder="price"
               value={price}
               onChange={(e) => setPrice(e.target.value)}
-              // required
             />
             <input
               type="text"
               placeholder="select category"
               value={category}
               onChange={(e) => setCategory(e.target.value)}
-              // required
             />
             <input
               type="date"
               placeholder="dd/mm/yyyy"
               value={date}
               onChange={(e) => setDate(e.target.value)}
-              // required
             />
-            <button className="expenseSubmit" type="submit">Add Expense</button>
-            <button onClick={handleCancel} className="expenseCanceled" type="button">Cancel</button>
+            <button className="expenseSubmit" type="submit">
+              Add Expense
+            </button>
+            <button
+              onClick={handleCancel}
+              className="expenseCanceled"
+              type="button"
+            >
+              Cancel
+            </button>
           </form>
         </Modal>
       </div>
