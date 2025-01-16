@@ -66,7 +66,7 @@ const Context = ({ children }) => {
       justifyContent: 'center',
       alignItems:'start',
       gap: '20px',
-      width: '600px',  // Modal width
+      width: '50%',  // Modal width
       height: 'max-content',
       margin: 'auto',  // Center the modal
       boxShadow: '0px 5px 15px rgba(0, 0, 0, 0.1)'  // Add a subtle shadow
