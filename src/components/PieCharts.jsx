@@ -31,7 +31,7 @@ const renderCustomizedLabel = ({
 };
 
 const PieCharts = () => {
-  const { listOfExpenses, walletBalance } = useContext(MyContext);
+  const { listOfExpenses } = useContext(MyContext);
   const [chartDimensions, setChartDimensions] = useState({
     width: 400,
     height: 300,
@@ -51,18 +51,28 @@ const PieCharts = () => {
   }, []);
 
   // Predefined categories and colors
-  const categories = ["Food", "Travel","Health","Entertainment", ];
+  const categories = ["Food", "Travel","Health","Entertainment" ];
   const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
 
+  const categoryColors = {
+    Food: "#0088FE",
+    Travel: "#00C49F",
+    Health: "#FFBB28",
+    Entertainment: "#FF8042"
+  }
+
+  const categoryNames = Object.keys(categoryColors)
   // Consolidate expenses into 4 main categories
-  const data = categories
-    .map((category) => {
+
+  const data = categoryNames
+    .map((categoryName) => {
       const total = listOfExpenses
-        .filter((expense) => expense.category === category)
+        .filter((expense) => expense.category === categoryName)
         .reduce((sum, expense) => sum + expense.price, 0);
-      return { name: category, value: total };
+      return { name: categoryName, value: total };
     })
     .filter((entry) => entry.value > 0); // Exclude categories with 0 value from the pie chart
+
 
   return (
     <div className="piechart-container">
@@ -77,8 +87,8 @@ const PieCharts = () => {
           fill="#8884d8"
           dataKey="value"
         >
-          {data.map((item, index) => (
-            <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+          {data.map((item) => (
+            <Cell key={`cell-${item.name}`} fill={categoryColors[item.name]} />
           ))}
         </Pie>
         <Tooltip />
@@ -103,6 +113,11 @@ const PieCharts = () => {
             <span style={{ fontSize: "14px", color: "#fff" }}>{category}</span>
           </div>
         ))}
+
+
+        
+
+
       </div>
     </div>
   );
